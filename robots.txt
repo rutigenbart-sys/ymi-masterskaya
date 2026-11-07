@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /cart/
+Sitemap: https://ymi-masterskaya.ru/sitemap.xml
