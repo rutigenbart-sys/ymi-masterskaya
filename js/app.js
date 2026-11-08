@@ -227,4 +227,18 @@
   }
 
   render();
+
+  /* ---------- прелоадер ---------- */
+  (function () {
+    var pre = document.getElementById("pre"); if (!pre) return;
+    var t0 = performance.now(), fin = false;
+    function done() {
+      if (fin) return; fin = true; pre.classList.add("gone");
+      try { sessionStorage.setItem("ymi_pre", "1"); } catch (e) {}
+      setTimeout(function () { if (pre.parentNode) pre.parentNode.removeChild(pre); }, 900);
+    }
+    function go() { setTimeout(done, Math.max(0, 1100 - (performance.now() - t0))); }
+    if (document.readyState === "complete") go(); else window.addEventListener("load", go);
+    setTimeout(done, 4000);
+  })();
 })();
