@@ -40,7 +40,7 @@
   function lineHTML(i, withControls) {
     var p = BY[i.id], u = R + "product/" + p.slug + "/";
     return '<div class="line"><a href="' + u + '"><img src="' + R + "img/" + p.img + '" alt="' + esc(p.name) + '" width="76" height="76" loading="lazy"></a>' +
-      '<div><h4><a href="' + u + '">' + esc(p.name) + '</a></h4><div class="l-meta">' + money(p.price) + " · " + esc(p.size) + "</div>" +
+      '<div><h4><a href="' + u + '">' + esc(p.name) + '</a></h4><div class="l-meta">Артикул ' + p.id + " · " + money(p.price) + " · " + esc(p.size) + "</div>" +
       '<div class="qty" data-line="' + p.id + '"><button type="button" data-d="-1" aria-label="Меньше">−</button><input type="number" min="1" max="99" value="' + i.qty + '" aria-label="Количество"><button type="button" data-d="1" aria-label="Больше">+</button></div></div>' +
       '<div><div class="l-price">' + money(p.price * i.qty) + '</div><button type="button" class="rm" data-rm="' + p.id + '">Удалить</button></div></div>';
   }
@@ -209,7 +209,7 @@
   $$("[data-order]").forEach(function (f) {
     bindForm(f, function (form) {
       if (!cart.length) { var m = $(".form-msg", form); m.className = "form-msg bad"; m.textContent = "Корзина пуста."; return ""; }
-      var lines = cart.map(function (i, n) { var p = BY[i.id]; return (n + 1) + ". " + p.name + " × " + i.qty + " — " + money(p.price * i.qty); }).join("\n");
+      var lines = cart.map(function (i, n) { var p = BY[i.id]; return (n + 1) + ". Артикул " + p.id + " — " + p.name + " × " + i.qty + " — " + money(p.price * i.qty); }).join("\n");
       var t = "🛍 Новый заказ — Мастерская YMi\n\n" + lines + "\n\nИтого: " + money(total()) +
         "\n\nИмя: " + val(form, "name") + "\nТелефон: " + val(form, "phone");
       if (val(form, "messenger")) t += "\nМессенджер: " + val(form, "messenger");
