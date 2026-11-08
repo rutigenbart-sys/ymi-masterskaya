@@ -84,6 +84,7 @@
       if (sel) { var inp = $(sel); if (inp) q = +inp.value; }
       add(a.getAttribute("data-add"), q);
       if (a.classList.contains("btn-add")) { a.classList.add("done"); setTimeout(function () { a.classList.remove("done"); }, 900); }
+      try { if (window.ym) ym(114134729, "reachGoal", "add_to_cart"); } catch (e) {}
       toast("Добавлено в корзину"); return;
     }
     var b = t.closest("[data-buy]");
@@ -177,6 +178,7 @@
       btn.disabled = true; var old = btn.textContent; btn.textContent = "Отправляем…";
       sendTelegram(text).then(function (res) {
         try { sessionStorage.setItem("ymi_last", Date.now()); } catch (e) {}
+        try { if (window.ym) ym(114134729, "reachGoal", form.hasAttribute("data-order") ? "order" : "lead"); } catch (e) {}
         if (res.sent) {
           msg.classList.add("ok"); msg.textContent = "Спасибо! Заявка отправлена — мы скоро свяжемся с вами.";
           form.reset();
