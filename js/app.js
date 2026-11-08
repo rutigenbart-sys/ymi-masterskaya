@@ -183,8 +183,8 @@
           if (form.hasAttribute("data-order")) { cart = []; commit(); }
         } else {
           msg.classList.add("ok");
-          msg.innerHTML = (res.opened ? "Открыли Telegram с готовым сообщением — нажмите «Отправить». " : "Нажмите, чтобы отправить в Telegram: ") +
-            '<a href="' + esc(res.link) + '" target="_blank" rel="noopener">Открыть Telegram</a>. Текст также скопирован в буфер обмена.';
+          msg.innerHTML = "<b>Заказ скопирован.</b> Откройте чат с мастером в Telegram, вставьте текст (долгое нажатие → «Вставить») и нажмите «Отправить». " +
+            '<a href="' + esc(res.link) + '" target="_blank" rel="noopener">Открыть Telegram</a>';
           if (form.hasAttribute("data-order")) { cart = []; commit(); }
         }
       }).catch(function () {
