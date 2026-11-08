@@ -147,7 +147,7 @@
         .then(function (r) { return r.json(); }).then(function (j) { if (!j.ok) throw new Error(j.description || "Telegram error"); return { sent: true }; });
     }
     // 3) запасной вариант — открыть Telegram с готовым текстом
-    var link = (TG.FALLBACK_LINK || "https://t.me/+" + CFG.PHONE_RAW) + "?text=" + encodeURIComponent(text);
+    var link = (TG.FALLBACK_LINK || "https://t.me/millana_milman") + "?text=" + encodeURIComponent(text);
     try { if (navigator.clipboard) navigator.clipboard.writeText(text); } catch (e) {}
     var w = null; try { w = window.open(link, "_blank", "noopener"); } catch (e) {}
     return Promise.resolve({ sent: false, link: link, opened: !!w });
@@ -183,13 +183,13 @@
           if (form.hasAttribute("data-order")) { cart = []; commit(); }
         } else {
           msg.classList.add("ok");
-          msg.innerHTML = "<b>Заказ скопирован.</b> Откройте чат с мастером в Telegram, вставьте текст (долгое нажатие → «Вставить») и нажмите «Отправить». " +
+          msg.innerHTML = "<b>Почти готово!</b> Открылся чат с мастером в Telegram — просто нажмите «Отправить». Если текста в поле нет, вставьте его: заказ скопирован. " +
             '<a href="' + esc(res.link) + '" target="_blank" rel="noopener">Открыть Telegram</a>';
           if (form.hasAttribute("data-order")) { cart = []; commit(); }
         }
       }).catch(function () {
         msg.classList.add("bad");
-        msg.innerHTML = "Не удалось отправить. Напишите нам: <a href=\"https://t.me/+" + CFG.PHONE_RAW + "\">Telegram</a> или позвоните " + esc(CFG.PHONE_DISPLAY || "");
+        msg.innerHTML = "Не удалось отправить. Напишите нам: <a href=\"https://t.me/millana_milman" + "\">Telegram</a> или позвоните " + esc(CFG.PHONE_DISPLAY || "");
       }).then(function () { btn.disabled = false; btn.textContent = old; if (form.hasAttribute("data-order")) render(); });
     });
   }

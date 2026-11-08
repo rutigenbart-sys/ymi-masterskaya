@@ -13,6 +13,6 @@ window.YMI_CONFIG = {
     ORDER_ENDPOINT: "",
     BOT_TOKEN: "",
     CHAT_ID: "",
-    FALLBACK_LINK: "https://t.me/+79266701649"
+    FALLBACK_LINK: "https://t.me/millana_milman"
   }
 };
